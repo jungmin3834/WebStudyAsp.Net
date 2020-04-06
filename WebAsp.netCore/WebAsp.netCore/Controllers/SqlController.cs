@@ -9,32 +9,36 @@ using WebAsp.netCore.Models;
 
 namespace WebAsp.netCore.Controllers
 {
-    public class HomeController : Controller
+    public class SqlController : Controller
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public SqlController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult ContactUs()
+        public IActionResult TableSqlMaker()
         {
             return View();
         }
-
-        public IActionResult About()
+        public IActionResult InsertSqlMaker()
         {
-            ViewData["Message"] = "Your application description page.";
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult SelectSqlMaker()
+        {
+            return View();
+        }
+        public IActionResult UpdateSqlmaker()
+        {
+            return View();
+        }
+        public IActionResult DeleteSqlmaker()
         {
             return View();
         }

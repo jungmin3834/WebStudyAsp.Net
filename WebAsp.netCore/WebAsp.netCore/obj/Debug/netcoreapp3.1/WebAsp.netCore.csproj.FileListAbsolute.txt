@@ -68,3 +68,11 @@ C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug
 C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.dll
 C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.pdb
 C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.csproj.CopyComplete
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Home\about.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\Index.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\TableSqlMaker.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\InsertSqlMaker.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\SelectSqlMaker.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\UpdateSqlmaker.cshtml.g.cs
+C:\Users\MSI\Documents\GitHub\WebAsp.Net\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\Razor\Views\Sql\DeleteSqlMaker.cshtml.g.cs
