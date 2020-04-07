@@ -13,7 +13,7 @@
                     </h4>
                     <p>
                         Table Name :
-                        <input />
+                        <input id="tableName" />
                     </p>
                     <input id="Id_Of_Textbox" type="button" value="Detail" onclick="tableScript()" />
                     <input id="testBox" type="button" value="test" onclick="tableScript()" />
@@ -37,14 +37,15 @@
                                         <input type="text" id="cname" size="10" />
                                     </td>
                                     <td>
-                                        <input type="text" list="cars" />
-                                        <datalist id="cars">
+                                        <input type="text" id="dateType" list="typelist" oninput="columnTypeSelect()"/>
+                                        <datalist id="typelist" >
                                             <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                             <option value="INT">INT</option>
                                             <option value="DECIMAL()">DECIMAL(SIZE)</option>
                                             <option value="DATETIME">DATETIME</option>
                                             <option value="BLOB">BLOB</option>
                                         </datalist>
+                                   
                                     </td>
                                     <td><input type="checkbox" id="pk" size="10" style="float:left;"></td>
                                     <td><input type="checkbox" id="nn" size="10" style="float:left;"></td>
@@ -102,7 +103,7 @@
             </div>
         </div>
         <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
-        </form>
+    </form>
 </body>
 </html>
 
