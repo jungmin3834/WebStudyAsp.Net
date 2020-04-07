@@ -12,16 +12,23 @@ namespace WebAsp.netCore.Controllers
     public class SqlController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+      
         public SqlController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
+
+
         public IActionResult Index()
         {
             return View();
         }
+        public ActionResult Please(string val)
+        {
+            TempData["Result"] = val;
 
+            return View();
+        }
         public IActionResult TableSqlMaker()
         {
             return View();
@@ -42,6 +49,8 @@ namespace WebAsp.netCore.Controllers
         {
             return View();
         }
+
+  
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

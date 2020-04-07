@@ -1,90 +1,99 @@
-﻿@{
-    ViewData["Title"] = "Table SQL maker";
-}
-<h2>@ViewData["Title"].</h2>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To-do CRUD</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <div style="width : 1100px;">
+        <div style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
+            <div>
+                <h4>
+                    Create Table.
+                </h4>
+                <p>
+                    Table Name :
+                    <input />
+                </p>
+                <input id="Id_Of_Textbox" type="button" value="Detail" onclick="onClick()" />
+                <p>
+                    <table border="1" cellpadding="3">
+                        <thead>
+                            <tr> <th>Column Name<th>Datatype<th>PK<th>NN<th>UQ<th>B&nbsp;&nbsp;<th>UN<th>ZF<th>AI&nbsp;<th>G&nbsp;&nbsp;
+                            <tr tabindex="1">
+                                <td>
+                                    <input type="text" id="cname" size="10" />
+                                </td>
+                                <td>
+                                    <input type="text" list="cars" />
+                                    <datalist id="cars">
+                                        <option value="VARCHAR()">VARCHAR(SIZE)</option>
+                                        <option value="INT">INT</option>
+                                        <option value="DECIMAL()">DECIMAL(SIZE)</option>
+                                        <option value="DATETIME">DATETIME</option>
+                                        <option value="BLOB">BLOB</option>
+                                    </datalist>
+                                </td>
+                                <td><input type="checkbox" id="pk" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="nn" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="uq" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="b" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="un" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="zf" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="ai" size="10" style="float:left;"></td>
+                                <td><input type="checkbox" id="g" size="10" style="float:left;"></td>
+                            <tr>
+                        <thead>
+                    </table>
+                </p>
+            </div>
+            <div>
+                <h2>
+                    Result
+                </h2>
+                <p>
+                    &ensp;CREATE TABLE 테이블 이름 (<br>
+                    &ensp;&emsp;컬럼명1 DATATYPE [DEFAULT 형식],<br>
+                    &ensp;&emsp;컬럼명2 DATATYPE [DEFAULT 형식],<br>
+                    &ensp;&emsp;컬럼명3 DATATYPE [DEFAULT 형식]<br>
+                    &ensp;);<br>
+                </p>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="TableSqlMaker">Table Maker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="SelectSqlMaker">Select Maker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="InsertSqlMaker">Insert Maker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="UpdateSqlMaker">Update Maker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="DeleteSqlMaker">Delete Maker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact us</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            How can we make SQL
+        </div>
+    </div>
+    <script src="js/site.js" asp-append-version="true"></script>
+</body>
+</html>
 
-<p>this page about Table SQL maker</p>
-<div style="width : 1100px;">
-    <div style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
-        <div>
-            <h4>
-                Create Table.
-            </h4>
-            <p>
-                Table Name : 
-                <input/> 
-                <button>Column Add</button>
-            </p>
-            <p>
-                <table border="1" cellpadding="3" >
-                    <thead>
-                        <tr> <th>Column Name<th>Datatype<th>PK<th>NN<th>UQ<th>B&nbsp;&nbsp;<th>UN<th>ZF<th>AI&nbsp;<th>G&nbsp;&nbsp;
-                            <tr tabindex="1" > 
-                            <td>
-                                <input type="text" id="cname" size="10" />
-                            </td>
-                            <td>
-                                <input type="text" list="cars" />
-                                <datalist id="cars">
-                                    <option value="VARCHAR()">VARCHAR(SIZE)</option>
-                                    <option value="INT">INT</option>
-                                    <option value="DECIMAL()">DECIMAL(SIZE)</option>
-                                    <option value="DATETIME">DATETIME</option>
-                                    <option value="BLOB">BLOB</option>
-                                </datalist>
-                            </td>
-                            <td><input type="checkbox" id="pk" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="nn" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="uq" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="b" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="un" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="zf" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="ai" size="10" style="float:left;"></td>
-                            <td><input type="checkbox" id="g" size="10" style="float:left;"></td>
-                        <tr> 
-                    <thead>
-                </table>
-            </p>
-        </div>
-        <div>
-            <h2>
-                Result
-            </h2>
-            <p>
-                &ensp;CREATE TABLE 테이블 이름 (<br>
-                &ensp;&emsp;컬럼명1 DATATYPE [DEFAULT 형식],<br>
-                &ensp;&emsp;컬럼명2 DATATYPE [DEFAULT 형식],<br>
-                &ensp;&emsp;컬럼명3 DATATYPE [DEFAULT 형식]<br>
-                &ensp;);<br>
-            </p>
-        </div>
-    </div>
-    <div>
-        <ul>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Main</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="TableSqlMaker">Table Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="SelectSqlMaker">Select Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="InsertSqlMaker">Insert Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="UpdateSqlMaker">Update Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="DeleteSqlMaker">Delete Maker</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact us</a>
-            </li>
-        </ul>
-    </div>
-    <div>
-        How can we make SQL
-    </div>
-</div>
+
+
+
