@@ -27,3 +27,12 @@ const columnTypeSelect = () => {
     const input = document.getElementById('dateType').setSelectionRange(idx, idx);
     input.focus();
 }
+
+const newColumnMaker = () => {
+
+    let tableMaker = document.getElementById('tableMaker').children.item(0);
+    let newClone = tableMaker.children.item(1).cloneNode(true);
+    tableMaker.appendChild(newClone);
+  
+    
+}
