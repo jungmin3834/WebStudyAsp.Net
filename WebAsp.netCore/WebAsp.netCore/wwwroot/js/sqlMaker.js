@@ -1,4 +1,6 @@
 ﻿
+let newClone = document.getElementById('tableMaker').children.item(0).children.item(1).cloneNode(true);
+
 const tableScript = () => {
 
     let tableMaker = document.getElementById('tableMaker').children.item(0);
@@ -28,11 +30,8 @@ const columnTypeSelect = () => {
     input.focus();
 }
 
-const newColumnMaker = () => {
+const columnDelete = (elem) => { elem.parentNode.parentNode.remove(); }
 
-    let tableMaker = document.getElementById('tableMaker').children.item(0);
-    let newClone = tableMaker.children.item(1).cloneNode(true);
-    tableMaker.appendChild(newClone);
-  
-    
-}
+const newColumnMaker = () => { document.getElementById('tableMaker').children.item(0).appendChild(newClone.cloneNode(true)); }
+
+
