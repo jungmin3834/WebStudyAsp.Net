@@ -1,13 +1,11 @@
-﻿
-let newClone = document.getElementById('tableMaker').children.item(0).children.item(1).cloneNode(true);
+﻿let newClone = document.getElementById('tableMaker').children.item(0).children.item(1).cloneNode(true);
+
 
 const newColumnMaker = () => {
     document.getElementById('tableMaker').children.item(0).appendChild(newClone.cloneNode(true));
 }
 
-const getTableTypeString = (element) => {
-    return element.parentNode.parentNode.children.item(1).firstElementChild.value;
-}
+const columnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
 const tableSqlMaker = () => {
 
@@ -17,7 +15,7 @@ const tableSqlMaker = () => {
     //ForSave
     //var rowList = [[], [], [], [], [], [], [], [], [], []];
     var result = "&ensp;CREATE TABLE " + tableName + "(<br>";
- 
+
     for (var i = 1; i < tableMaker.children.length; i++) {
         let row = tableMaker.children.item(i);
         result += "&ensp;&emsp;";
@@ -32,7 +30,7 @@ const tableSqlMaker = () => {
                     case "ai": result = result + "AUTO_INCREMENT "; break;
                     case "g": result = result + "GENERATED ALWAYS AS (Input your data on here (ex lastName + firstName)) "; break;
                 }
-               // rowList[j].push(row.children.item(j).children.item(0).checked);
+                // rowList[j].push(row.children.item(j).children.item(0).checked);
             }
             else if (row.children.item(j).children.item(0).getAttribute("type") == "text") {
                 result = result + row.children.item(j).children.item(0).value + " ";
@@ -46,6 +44,10 @@ const tableSqlMaker = () => {
     document.getElementById("resultSql").innerHTML = result;
 }
 
+
+const getTableTypeString = (element) => {
+    return element.parentNode.parentNode.children.item(1).firstElementChild.value;
+}
 
 const checkBoxClear = (element) => {
     element = element.parentNode.parentNode;
@@ -64,7 +66,6 @@ const columnTypeSelect = (element) => {
     
 }
 
-const columnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
 const pkCheckboxClick = (element) => {
     if (element.checked == false)
@@ -79,7 +80,6 @@ const nnCheckboxClick = (element) => {
     }
 }
 
-
 const bCheckboxClick = (element) => {
     if (element.checked == false)
         return;
@@ -87,7 +87,6 @@ const bCheckboxClick = (element) => {
         getTableTypeString(element).indexOf("VARCHAR(") == -1
             ? false : true;
 }
-
 
 const unzfCheckboxClick = (element) => {
     
@@ -99,7 +98,6 @@ const unzfCheckboxClick = (element) => {
         element.checked = false;
     
 }
-
 
 const aiAndgCheckboxClick = (element) => {
 
@@ -117,3 +115,4 @@ const aiAndgCheckboxClick = (element) => {
             parent.nextElementSibling : parent.previousElementSibling).firstChild.checked = false;
     }
 }
+

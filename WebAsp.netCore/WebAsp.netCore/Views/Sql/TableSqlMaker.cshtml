@@ -6,8 +6,9 @@
 <body>
     <form id="form1" runat="server">
         <div style="width : 1100px;">
-            <div style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
-                <div class="fream upDown">
+            <!--------------------------------Create SQL --------------------------------------------------->
+            <div class="fream upDown" ; style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
+                <div>
                     <h2>
                         Create Table.
                     </h2>
@@ -16,7 +17,7 @@
                     <h4 class="step">
                         Step 1.
                     </h4>
-                    <p>
+                    <p class="stepLeft">
                         Select Your SQL :
                         <select id="sqlType">
                             <option value="MySQL">MySQL</option>
@@ -28,19 +29,19 @@
                     <h4 class="step">
                         Step 2.
                     </h4>
-                    <p>
+                    <p class="stepLeft">
                         Table Name :
                         <input id="tableName" />
                     </p>
                     <h4 class="step">
                         Step 3.
                     </h4>
-                    <p>
+                    <p class="stepLeft">
                         Make your database Column
                     </p>
-                    <input class="sqlButtonFream" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
                     <p>
-                        <table id="tableMaker" tabindex="213" border="1" cellpadding="3">
+                        <input class="stepInput" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
+                        <table class="stepInput" id="tableMaker" tabindex="213" border="1" cellpadding="3">
                             <thead>
                                 <tr>
                                     <th id="cname">Column Name
@@ -80,15 +81,15 @@
                                 </tr>
                             </thead>
                         </table>
+                        <input class="stepInput" id="testBox" type="button" value="Make SQL" onclick="tableSqlMaker()" />
                     </p>
-                    <input class="sqlButtonFream" id="testBox" type="button" value="Make SQL" onclick="tableSqlMaker()" />
+
                 </div>
-           
                 <div class="fream upDown">
-                    <h2>
-                        Result
-                    </h2>
-                    <p id="resultSql">
+                    <h4 class="step">
+                        Step 4.
+                    </h4>
+                    <p class="stepLeft" id="resultSql">
                         &ensp;CREATE TABLE 테이블 이름 (<br>
                         &ensp;&emsp;컬럼명1 DATATYPE [DEFAULT 형식],<br>
                         &ensp;&emsp;컬럼명2 DATATYPE [DEFAULT 형식],<br>
@@ -97,14 +98,128 @@
                     </p>
                 </div>
             </div>
-            <div>
-                How can we make SQL
+
+            <!--------------------------------SQL Description--------------------------------------------------->
+            <div class="fream upDown" ; style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
+                <a class="fream" style="display:block;" onclick="openPage(this)" href="javascript:void(0)">
+                    Read About SQL
+                </a>
+                <div style="display : none; border: 1px solid gold; width : 1100px; height : auto;">
+                    <h2>
+                        SQL
+                    </h2>
+                    <div class="stepLeft">
+                        <h4>
+                            MySQL
+                        </h4>
+                        <p class="stepLeft">
+                            sql explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <h4>
+                            MsSQL
+                        </h4>
+                        <p class="stepLeft">
+                            MsSQL explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <h4 class="step">
+                            Oracle
+                        </h4>
+                        <p class="stepLeft">
+                            sql explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <h4 class="step">
+                            SQLServer
+                        </h4>
+                        <p class="stepLeft">
+                            sql explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <a style="padding-top:10px; display:block;" onclick="closePage(this)" href="javascript:void(0)">
+                            Close Description
+                        </a>
+                    </div>
+                </div>
             </div>
+
+            <!--------------------------------SQL Column Description-------------------------------------------->
+            <div class="fream upDown" ; style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
+                <a class="fream" style="display:block;" onclick="openPage(this)" href="javascript:void(0)">
+                    Read About Column
+                </a>
+                <div style="display : none; border: 1px solid gold; width : 1100px; height : auto;">
+                    <h2>
+                        Column
+                    </h2>
+                    <div class="stepLeft">
+                        <h4>
+                            Column Name
+                        </h4>
+                        <p class="stepLeft">
+                            Column Name
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <h4>
+                            Data Type
+                        </h4>
+                        <p class="stepLeft">
+                            Data Type
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <h4 class="step">
+                            Other
+                        </h4>
+                        <p class="stepLeft">
+                            sql explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <a style="padding-top:10px; display:block;" onclick="closePage(this)" href="javascript:void(0)">
+                            Close Description
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!--------------------------------SQL Query Description--------------------------------------------->
+            <div class="fream upDown" ; style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
+                <a class="fream" style="display:block;" onclick="openPage(this)" href="javascript:void(0)">
+                    Read About SQL Query
+                </a>
+                <div style="display : none; border: 1px solid gold; width : 1100px; height : auto;">
+                    <h2>
+                        SQL Query
+                    </h2>
+                    <div class="stepLeft">
+                        <h4>
+                            Create
+                        </h4>
+                        <p class="stepLeft">
+                            sql explain
+                        </p>
+                    </div>
+                    <div class="stepLeft">
+                        <a style="padding-top:10px; display:block;" onclick="closePage(this)" href="javascript:void(0)">
+                            Close Description
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <link rel="stylesheet" href="~/css/sqlMaker.css"/>
-        <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
-    </form>
-</body>
+          <link rel="stylesheet" href="~/css/sqlMaker.css" />
+          <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
+          <script src="~/js/htmlController.js" asp-append-version="true"></script>
+        </form>
+    </body>
 </html>
 
 

@@ -16,6 +16,14 @@
     height: 30px;
 }
 
+.stepInput {
+    margin: 10px;
+}
+
+.stepLeft {
+    padding-left : 20px;
+}
+
 .step {
     padding-top :10px;
     padding-bottom: 10px;
