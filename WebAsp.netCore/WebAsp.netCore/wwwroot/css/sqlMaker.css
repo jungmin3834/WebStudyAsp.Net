@@ -21,7 +21,8 @@
 }
 
 .stepLeft {
-    padding-left : 20px;
+    margin: 8px;
+    padding: 8px;
 }
 
 .step {
