@@ -7,38 +7,58 @@
     <form id="form1" runat="server">
         <div style="width : 1100px;">
             <div style="border: 1px solid gold; width : 1100px; height : auto; margin : 4px;">
-                <div>
-                    <h4>
+                <div class="fream upDown">
+                    <h2>
                         Create Table.
+                    </h2>
+                </div>
+                <div class="fream upDown">
+                    <h4 class="step">
+                        Step 1.
+                    </h4>
+                    <p>
+                        Select Your SQL :
+                        <select id="sqlType">
+                            <option value="MySQL">MySQL</option>
+                            <option value="MMSQL">MMSQL</option>
+                            <option value="Oracle">Oracle</option>
+                            <option value="SQLServer">SQL Server</option>
+                        </select>
+                    </p>
+                    <h4 class="step">
+                        Step 2.
                     </h4>
                     <p>
                         Table Name :
                         <input id="tableName" />
                     </p>
-                    <input id="testBox" type="button" value="Get Result SQL" onclick="tableScript()" />
-                    <input id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
+                    <h4 class="step">
+                        Step 3.
+                    </h4>
+                    <p>
+                        Make your database Column
+                    </p>
+                    <input class="sqlButtonFream" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
                     <p>
                         <table id="tableMaker" tabindex="213" border="1" cellpadding="3">
                             <thead>
                                 <tr>
-                                    <th id = "cname">Column Name
-                                    <th id = "dateType">Datatype
-                                    <th id = "pk">PK
-                                    <th id = "nn">NN
-                                    <th id = "nq">UQ
-                                    <th id = "b">B&nbsp;&nbsp;
-                                    <th id = "un">UN
-                                    <th id = "zf">ZF
-                                    <th id = "ai">AI&nbsp;
-                                    <th id = "g">G&nbsp;&nbsp;
-                                    <th id = "deleteButton">DeleteColumn
+                                    <th id="cname">Column Name
+                                    <th id="dateType">Datatype
+                                    <th id="pk">PK
+                                    <th id="nn">NN
+                                    <th id="nq">UQ
+                                    <th id="b">B&nbsp;&nbsp;
+                                    <th id="un">UN
+                                    <th id="zf">ZF
+                                    <th id="ai">AI&nbsp;
+                                    <th id="g">G&nbsp;&nbsp;
+                                    <th id="deleteButton">DeleteColumn
                                 </tr>
                                 <tr>
-                                    <td headers="cname">
-                                        <input type="text"  size="10" />
-                                    </td>
+                                    <td headers="cname"> <input type="text" size="10" /></td>
                                     <td headers="dateType">
-                                        <input type="text" value="s" list="typelist" oninput="columnTypeSelect(this)" />
+                                        <input type="text" list="typelist" oninput="columnTypeSelect(this)" />
                                         <datalist id="typelist">
                                             <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                             <option value="INT">INT</option>
@@ -50,23 +70,25 @@
                                     </td>
                                     <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
                                     <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="uq"><input type="checkbox"  size="10" style="float:left;"></td>
-                                    <td headers="b" ><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="un"><input type="checkbox"  size="10" style="float:left;"></td>
-                                    <td headers="zf"><input type="checkbox"  size="10" style="float:left;"></td>
+                                    <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
+                                    <td headers="b"><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="un"><input type="checkbox" onclick="unzfCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
                                     <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="g" ><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button"  size="100" style="float:left;"></td>
+                                    <td headers="g"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
                                 </tr>
                             </thead>
                         </table>
                     </p>
+                    <input class="sqlButtonFream" id="testBox" type="button" value="Make SQL" onclick="tableSqlMaker()" />
                 </div>
-                <div>
+           
+                <div class="fream upDown">
                     <h2>
                         Result
                     </h2>
-                    <p>
+                    <p id="resultSql">
                         &ensp;CREATE TABLE 테이블 이름 (<br>
                         &ensp;&emsp;컬럼명1 DATATYPE [DEFAULT 형식],<br>
                         &ensp;&emsp;컬럼명2 DATATYPE [DEFAULT 형식],<br>
@@ -76,34 +98,10 @@
                 </div>
             </div>
             <div>
-                <ul>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Main</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="TableSqlMaker">Table Maker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="SelectSqlMaker">Select Maker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="InsertSqlMaker">Insert Maker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="UpdateSqlMaker">Update Maker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Sql" asp-action="DeleteSqlMaker">Delete Maker</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact us</a>
-                    </li>
-                </ul>
-            </div>
-            <div>
                 How can we make SQL
             </div>
         </div>
+        <link rel="stylesheet" href="~/css/sqlMaker.css"/>
         <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
     </form>
 </body>
