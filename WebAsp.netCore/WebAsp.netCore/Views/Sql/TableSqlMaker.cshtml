@@ -21,24 +21,24 @@
                         <table id="tableMaker" tabindex="213" border="1" cellpadding="3">
                             <thead>
                                 <tr>
-                                    <th>Column Name
-                                    <th>Datatype
-                                    <th>PK
-                                    <th>NN
-                                    <th>UQ
-                                    <th>B&nbsp;&nbsp;
-                                    <th>UN
-                                    <th>ZF
-                                    <th>AI&nbsp;
-                                    <th>G&nbsp;&nbsp;
-                                    <th>DeleteColumn
+                                    <th id = "cname">Column Name
+                                    <th id = "dateType">Datatype
+                                    <th id = "pk">PK
+                                    <th id = "nn">NN
+                                    <th id = "nq">UQ
+                                    <th id = "b">B&nbsp;&nbsp;
+                                    <th id = "un">UN
+                                    <th id = "zf">ZF
+                                    <th id = "ai">AI&nbsp;
+                                    <th id = "g">G&nbsp;&nbsp;
+                                    <th id = "deleteButton">DeleteColumn
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <input type="text" id="cname" size="10" />
+                                    <td headers="cname">
+                                        <input type="text"  size="10" />
                                     </td>
-                                    <td>
-                                        <input type="text" id="dateType" list="typelist" oninput="columnTypeSelect()" />
+                                    <td headers="dateType">
+                                        <input type="text" value="s" list="typelist" oninput="columnTypeSelect(this)" />
                                         <datalist id="typelist">
                                             <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                             <option value="INT">INT</option>
@@ -48,15 +48,15 @@
                                         </datalist>
 
                                     </td>
-                                    <td><input type="checkbox" id="pk" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="nn" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="uq" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="b" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="un" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="zf" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="ai" size="10" style="float:left;"></td>
-                                    <td><input type="checkbox" id="g" size="10" style="float:left;"></td>
-                                    <td><input type="button" onclick="columnDelete(this)" value="Delete Button" id="g" size="100" style="float:left;"></td>
+                                    <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="uq"><input type="checkbox"  size="10" style="float:left;"></td>
+                                    <td headers="b" ><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="un"><input type="checkbox"  size="10" style="float:left;"></td>
+                                    <td headers="zf"><input type="checkbox"  size="10" style="float:left;"></td>
+                                    <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="g" ><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                    <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button"  size="100" style="float:left;"></td>
                                 </tr>
                             </thead>
                         </table>

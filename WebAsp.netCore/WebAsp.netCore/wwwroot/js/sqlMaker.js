@@ -23,15 +23,48 @@ const tableScript = () => {
     alert(result);
 }
 
-const columnTypeSelect = () => {
-
-    var idx = document.getElementById('dateType').value.indexOf('(', 0) + 1;
-    const input = document.getElementById('dateType').setSelectionRange(idx, idx);
-    input.focus();
+const bCheckboxClick = (element) => {
+    if (element.checked == false)
+        return;
+    element.checked =
+        element.parentNode.parentNode.children.item(1).firstElementChild.value.indexOf("VARCHAR(") == -1
+            ? false : true;
 }
 
-const columnDelete = (elem) => { elem.parentNode.parentNode.remove(); }
+
+const columnTypeSelect = (element) => {
+    bCheckboxClick(element.parentNode.parentNode.children.item(5).firstElementChild);
+    var idx = element.value.indexOf('(', 0) + 1;
+    const input = element.setSelectionRange(idx, idx);
+    input.focus();
+    
+}
+
+const columnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
 const newColumnMaker = () => { document.getElementById('tableMaker').children.item(0).appendChild(newClone.cloneNode(true)); }
 
+const pkCheckboxClick = (element) => {
+    if (element.checked == false)
+        return;
+    element.parentNode.nextElementSibling.firstChild.checked = true;
+}
 
+const nnCheckboxClick = (element) => {
+    var pkElement = element.parentNode.previousElementSibling.firstChild;
+    if (element.checked == false && pkElement.checked == true) {
+        pkElement.checked = false;
+        return;
+    }
+}
+
+
+const aiAndgCheckboxClick = (element) => {
+ 
+    if (element.checked == false) {
+        return;
+    } 
+    var parent = element.parentNode;
+    (parent.headers == 'ai' ?
+        parent.nextElementSibling : parent.previousElementSibling).firstChild.checked = false;
+}
