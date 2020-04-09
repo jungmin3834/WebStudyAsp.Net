@@ -1,5 +1,4 @@
-﻿
-const getSqlType = () => { return document.getElementById('sqlType').value; }
+﻿const getSqlType = () => { return document.getElementById('sqlType').value; }
 
 var currentTable = 'MySQL';
 let newMySql = document.getElementById('MySQLtableMaker').children.item(0).children.item(1).cloneNode(true);
@@ -16,6 +15,7 @@ const newColumnMaker = () => {
         case "Oracle": clone = newOracle; break;
         case "SQLServer": clone = newSqlServer; break;
     }
+    
     document.getElementById(getSqlType() + 'tableMaker').children.item(0).appendChild(clone.cloneNode(true));
 }
 
@@ -81,33 +81,44 @@ const getQueryFromCheckBoxString = (item) => {
     return "";
 }
 
+
+
 const tableSqlMaker = () => {
 
     let tableMaker = document.getElementById(getSqlType() + 'tableMaker').children.item(0);
     let tableName = document.getElementById('tableName').value;
     //ForSave
-    //var rowList = [[], [], [], [], [], [], [], [], [], []];
+    var rowList = [[], [], [], [], [], [], [], [], [], []];
     var result = "CREATE TABLE " + tableName + "(<br>";
+    var cookieResult = tableName + "=" + currentTable + "/";
 
     for (var i = 1; i < tableMaker.children.length; i++) {
         let row = tableMaker.children.item(i);
         result += "&ensp;&emsp;";
         for (var j = 0; j < row.children.length; j++) {
-            if (row.children.item(j).children.item(0).getAttribute("type") == "checkbox"
-                && row.children.item(j).children.item(0).checked == true) {
-                result += getQueryFromCheckBoxString(row.children.item(j));
-                // rowList[j].push(row.children.item(j).children.item(0).checked);
+            if (row.children.item(j).children.item(0).getAttribute("type") == "checkbox") {
+                var isChecked = row.children.item(j).children.item(0).checked;
+                if (isChecked == true) {
+                    result += getQueryFromCheckBoxString(row.children.item(j));
+                }
+                cookieResult += isChecked == true? '1' : '0' + "/";
+                rowList[j].push(row.children.item(j).children.item(0).checked);
+
             }
             else if (row.children.item(j).children.item(0).getAttribute("type") == "text") {
+                cookieResult += row.children.item(j).children.item(0).value + "/";
                 result = result + row.children.item(j).children.item(0).value + " ";
-                //rowList[j].push(row.children.item(j).children.item(0).value);
+                rowList[j].push(row.children.item(j).children.item(0).value);
             }
         }
         result += ",<br>";
     }
-    alert(document.getElementById("resultSql").value);
     result = result.slice(0, result.length - 5) + "<br>);";
     document.getElementById("resultSql").innerHTML = result;
+    cookieResult += "; path=/;";
+    document.cookie = cookieResult;
+    getCookie();
+    
 }
 
 const sqlTypeSelect = (element) => {

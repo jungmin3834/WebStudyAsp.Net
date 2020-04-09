@@ -118,3 +118,4 @@ C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.dll
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.pdb
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.csproj.CopyComplete
+C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.csprojAssemblyReference.cache
