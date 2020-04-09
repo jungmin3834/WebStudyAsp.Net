@@ -87,7 +87,6 @@ C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\bin\Debug
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\bin\Debug\netcoreapp3.1\WebAsp.netCore.pdb
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\bin\Debug\netcoreapp3.1\WebAsp.netCore.Views.dll
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\bin\Debug\netcoreapp3.1\WebAsp.netCore.Views.pdb
-C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.csprojAssemblyReference.cache
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.RazorAssemblyInfo.cache
 C:\Users\MSI\Documents\GitHub\ASp.netWeb\WebAsp.netCore\WebAsp.netCore\obj\Debug\netcoreapp3.1\WebAsp.netCore.RazorAssemblyInfo.cs

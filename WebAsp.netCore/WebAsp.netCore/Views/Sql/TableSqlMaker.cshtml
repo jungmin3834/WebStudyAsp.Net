@@ -19,11 +19,11 @@
                     </h4>
                     <p class="stepLeft">
                         Select Your SQL :
-                        <select id="sqlType">
+                        <select id="sqlType" onclick="sqlTypeSelect(this)">
                             <option value="MySQL">MySQL</option>
-                            <option value="MMSQL">MMSQL</option>
+                            <option value="MsSQL">MsSQL</option>
                             <option value="Oracle">Oracle</option>
-                            <option value="SQLServer">SQL Server</option>
+                            <option value="SQLServer">SQLServer</option>
                         </select>
                     </p>
                     <h4 class="step">
@@ -41,46 +41,150 @@
                     </p>
                     <p>
                         <input class="stepInput" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
-                        <table class="stepInput" id="tableMaker" tabindex="213" border="1" cellpadding="3">
-                            <thead>
-                                <tr>
-                                    <th id="cname">Column Name
-                                    <th id="dateType">Datatype
-                                    <th id="pk">PK
-                                    <th id="nn">NN
-                                    <th id="nq">UQ
-                                    <th id="b">B&nbsp;&nbsp;
-                                    <th id="un">UN
-                                    <th id="zf">ZF
-                                    <th id="ai">AI&nbsp;
-                                    <th id="g">G&nbsp;&nbsp;
-                                    <th id="deleteButton">DeleteColumn
-                                </tr>
-                                <tr>
-                                    <td headers="cname"> <input type="text" size="10" /></td>
-                                    <td headers="dateType">
-                                        <input type="text" list="typelist" oninput="columnTypeSelect(this)" />
-                                        <datalist id="typelist">
-                                            <option value="VARCHAR()">VARCHAR(SIZE)</option>
-                                            <option value="INT">INT</option>
-                                            <option value="DECIMAL()">DECIMAL(SIZE)</option>
-                                            <option value="DATETIME">DATETIME</option>
-                                            <option value="BLOB">BLOB</option>
-                                        </datalist>
+                        <div id="MySQLTable" style="display:block;">
+                            <table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3">
+                                <thead>
+                                    <tr>
+                                        <th>Column Name
+                                        <th>Datatype
+                                        <th>PK
+                                        <th>NN
+                                        <th>UQ
+                                        <th>B&nbsp;&nbsp;
+                                        <th>UN
+                                        <th>ZF
+                                        <th>AI&nbsp;
+                                        <th>G&nbsp;&nbsp;
+                                        <th>DeleteColumn
+                                    </tr>
+                                    <tr>
+                                        <td headers="cname"> <input type="text" size="10" /></td>
+                                        <td headers="dateType">
+                                            <input type="text" list="typelist" oninput="columnTypeSelect(this)" />
+                                            <datalist id="typelist">
+                                                <option value="VARCHAR()">VARCHAR(SIZE)</option>
+                                                <option value="INT">INT</option>
+                                                <option value="DECIMAL()">DECIMAL(SIZE)</option>
+                                                <option value="DATETIME">DATETIME</option>
+                                                <option value="BLOB">BLOB</option>
+                                            </datalist>
 
-                                    </td>
-                                    <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                                    <td headers="b"><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="un"><input type="checkbox" onclick="unzfCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="g"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                    <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
-                                </tr>
-                            </thead>
-                        </table>
+                                        </td>
+                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
+                                        <td headers="b"><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="un"><input type="checkbox" onclick="unzfCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="g"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div id="MsSQLTable" style="display:none;">
+                            <table class="stepInput" id="MsSQLtableMaker" tabindex="213" border="1" cellpadding="3">
+                                <thead>
+                                    <tr>
+                                        <th>Column Name
+                                        <th>Datatype
+                                        <th>PK
+                                        <th>NN
+                                        <th>UQ
+                                        <th>AI&nbsp;
+                                        <th>DeleteColumn
+                                    </tr>
+                                    <tr>
+                                        <td headers="cname"> <input type="text" size="10" /></td>
+                                        <td headers="dateType">
+                                            <input type="text" list="Mslist" oninput="columnTypeSelect(this)" />
+                                            <datalist id="Mslist">
+                                                <option value="VARCHAR()">VARCHAR(SIZE)</option>
+                                                <option value="INT">INT</option>
+                                                <option value="DECIMAL()">DECIMAL(SIZE)</option>
+                                                <option value="DATETIME">DATETIME</option>
+                                                <option value="BLOB">BLOB</option>
+                                            </datalist>
+
+                                        </td>
+                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div id="OracleTable" style="display:none;">
+                            <table class="stepInput" id="OracletableMaker" tabindex="213" border="1" cellpadding="3">
+                                <thead>
+                                    <tr>
+                                        <th>Column Name
+                                        <th>Datatype
+                                        <th>PK
+                                        <th>NN
+                                        <th>UQ
+                                        <th>AI&nbsp;
+                                        <th>DeleteColumn
+                                    </tr>
+                                    <tr>
+                                        <td headers="cname"> <input type="text" size="10" /></td>
+                                        <td headers="dateType">
+                                            <input type="text" list="oraclelist" oninput="columnTypeSelect(this)" />
+                                            <datalist id="oraclelist">
+                                                <option value="VARCHAR()">VARCHAR(SIZE)</option>
+                                                <option value="NUMBER">NUMBER</option>
+                                                <option value="DECIMAL()">DECIMAL(SIZE)</option>
+                                                <option value="DATETIME">DATETIME</option>
+                                                <option value="BLOB">BLOB</option>
+                                            </datalist>
+
+                                        </td>
+                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div id="SQLServerTable" style="display:none;">
+                            <table class="stepInput" id="SQLServertableMaker" tabindex="213" border="1" cellpadding="3">
+                                <thead>
+                                    <tr>
+                                        <th>Column Name
+                                        <th>Datatype
+                                        <th>PK
+                                        <th>NN
+                                        <th>UQ
+                                        <th>AI&nbsp;
+                                        <th>DeleteColumn
+                                    </tr>
+                                    <tr>
+                                        <td headers="cname"> <input type="text" size="10" /></td>
+                                        <td headers="dateType">
+                                            <input type="text" list="SQLServerlist" oninput="columnTypeSelect(this)" />
+                                            <datalist id="SQLServerlist">
+                                                <option value="VARCHAR()">VARCHAR(SIZE)</option>
+                                                <option value="INT">INT</option>
+                                                <option value="DECIMAL()">DECIMAL(SIZE)</option>
+                                                <option value="DATETIME">DATETIME</option>
+                                                <option value="BLOB">BLOB</option>
+                                            </datalist>
+
+                                        </td>
+                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
                         <input class="stepInput" id="testBox" type="button" value="Make SQL" onclick="tableSqlMaker()" />
                     </p>
 
