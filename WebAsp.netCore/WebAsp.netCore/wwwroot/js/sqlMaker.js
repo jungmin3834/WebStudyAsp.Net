@@ -1,22 +1,34 @@
 ﻿const getSqlType = () => { return document.getElementById('sqlType').value; }
 
 var currentTable = 'MySQL';
-let newMySql = document.getElementById('MySQLtableMaker').children.item(0).children.item(1).cloneNode(true);
-let newMsSql = document.getElementById('MsSQLtableMaker').children.item(0).children.item(1).cloneNode(true);
-let newOracle = document.getElementById('OracletableMaker').children.item(0).children.item(1).cloneNode(true);
-let newSqlServer = document.getElementById('SQLServertableMaker').children.item(0).children.item(1).cloneNode(true);
+
+let newMySql =     null; 
+let newMsSql =     null; 
+let newOracle =    null; 
+let newSqlServer = null; 
+
+const init = () => {
+    newMySql = document.getElementById('MySQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
+    newMsSql = document.getElementById('MsSQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
+    newOracle = document.getElementById('OracletableMaker').firstElementChild.lastElementChild.cloneNode(true);
+    newSqlServer = document.getElementById('SQLServertableMaker').firstElementChild.lastElementChild.cloneNode(true);
+}
+init();
+
+
 
 const newColumnMaker = () => {
-   
-    var clone;
+
+    var clone = null;
+
     switch (getSqlType()) {
         case "MySQL": clone = newMySql; break;
         case "MsSQL": clone = newMsSql; break;
         case "Oracle": clone = newOracle; break;
         case "SQLServer": clone = newSqlServer; break;
     }
-    
-    document.getElementById(getSqlType() + 'tableMaker').children.item(0).appendChild(clone.cloneNode(true));
+
+    document.getElementById(getSqlType() + 'tableMaker').firstElementChild.appendChild(clone.cloneNode(true));
 }
 
 const columnDelete = (element) => { element.parentNode.parentNode.remove(); }

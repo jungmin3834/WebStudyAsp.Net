@@ -3,5 +3,4 @@
 
 // Write your JavaScript code.
 function onClick() {
-    alert("윽!");
 }

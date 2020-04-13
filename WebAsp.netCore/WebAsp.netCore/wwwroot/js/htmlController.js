@@ -12,13 +12,11 @@ const closePage = (element) => {
 
 const cookieParser = (element) => {
     var cookie = document.cookie;
-    alert(cookie);
 }
 
 function getCookie() {
 
     var decodedCookie = document.cookie;
-    alert(decodedCookie);
     var ca = decodedCookie.split('=');
     var tableName = ca[0];
     var el = ca[1].split('/');

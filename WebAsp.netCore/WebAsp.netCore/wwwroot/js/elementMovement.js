@@ -15,8 +15,7 @@ function dragStart(e) {
     if (e.target !== e.currentTarget && e.target.className.split(' ')[0] == 'item') {
 
         active = true;
-
-        activeItem = e.target;
+        activeItem = e.target.parentNode;   
 
         if (activeItem !== null) {
             if (!activeItem.xOffset) {
