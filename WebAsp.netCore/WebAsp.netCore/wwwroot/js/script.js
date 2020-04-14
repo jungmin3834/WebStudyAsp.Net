@@ -13,7 +13,6 @@ const newTableMaker = () => {
     var createTable;
     createTable = document.createElement('createTable')
     createTable.innerHTML =
-        '<div id="container"> '+
         '<div id="test" style="display:block; width:650px;"> ' +
         '<div class="item" style = "border: 10px solid rgba(136, 136, 136, .5); " >Table Name:<input type="text" size="10" /></div > ' +
         '<div class="item" style="border: 10px solid rgba(136, 136, 136, .5); "> Description :<input type="text" size="40" /></div>' +
@@ -41,7 +40,7 @@ const newTableMaker = () => {
         '<td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="g"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete" size="100" style="float:left;"></td> ' +
-        '</tr> ' + '</thead> ' + '</table> ' + '</div>' + '</div>';
+        '</tr> ' + '</thead> ' + '</table> ' + '</div>';
 
     document.getElementById('container').appendChild(createTable.firstElementChild);
 }
