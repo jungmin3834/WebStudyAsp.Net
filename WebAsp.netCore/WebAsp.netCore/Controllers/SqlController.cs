@@ -29,7 +29,7 @@ namespace WebAsp.netCore.Controllers
 
             return View();
         }
-        public IActionResult getCreateTableSQLCode()
+        public IActionResult TableSqlMaker()
         {
             return View();
         }

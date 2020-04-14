@@ -15,6 +15,8 @@ const init = () => {
     newSqlServer = document.getElementById('SQLServertableMaker').firstElementChild.lastElementChild.cloneNode(true);
 }
 
+
+
 const tableNewColumnMaker = () => {
 
     var clone = null;
@@ -28,6 +30,7 @@ const tableNewColumnMaker = () => {
 
     document.getElementById(getSqlType() + 'tableMaker').firstElementChild.appendChild(clone.cloneNode(true));
 }
+
 
 const tableColumnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
