@@ -7,17 +7,15 @@ let newMsSql =     null;
 let newOracle =    null; 
 let newSqlServer = null; 
 
+
 const init = () => {
     newMySql = document.getElementById('MySQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
     newMsSql = document.getElementById('MsSQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
     newOracle = document.getElementById('OracletableMaker').firstElementChild.lastElementChild.cloneNode(true);
     newSqlServer = document.getElementById('SQLServertableMaker').firstElementChild.lastElementChild.cloneNode(true);
 }
-init();
 
-
-
-const newColumnMaker = () => {
+const tableNewColumnMaker = () => {
 
     var clone = null;
 
@@ -31,10 +29,10 @@ const newColumnMaker = () => {
     document.getElementById(getSqlType() + 'tableMaker').firstElementChild.appendChild(clone.cloneNode(true));
 }
 
-const columnDelete = (element) => { element.parentNode.parentNode.remove(); }
+const tableColumnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
 //MySql
-const getMySqlQueryCheckBox = (item) => {
+const getMySqlTransferFromCheckBox = (item) => {
     switch (item.headers) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
@@ -48,7 +46,7 @@ const getMySqlQueryCheckBox = (item) => {
 }
 
 //MsSql
-const getMsSqlQueryCheckBox = (item) => {
+const getMsSqlTransferFromCheckBox = (item) => {
     switch (item.headers) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
@@ -59,7 +57,7 @@ const getMsSqlQueryCheckBox = (item) => {
 }
 
 //Oracle
-const getOracleQueryCheckBox = (item) => {
+const getOracleTransferFromCheckBox = (item) => {
     switch (item.headers) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
@@ -70,7 +68,7 @@ const getOracleQueryCheckBox = (item) => {
 }
 
 //SQLServer
-const getSQLServerQueryCheckBox = (item) => {
+const getSQLServerTransferFromCheckBox = (item) => {
     switch (item.headers) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
@@ -80,22 +78,19 @@ const getSQLServerQueryCheckBox = (item) => {
     return "";
 }
 
-
-const getQueryFromCheckBoxString = (item) => {
-
+const getQueryFromCheckBoxChecked = (item) => {
 
     switch (getSqlType()) {
-        case "MySQL": return getMySqlQueryCheckBox(item);
-        case "MsSQL": return getMsSqlQueryCheckBox(item);
-        case "Oracle": return getOracleQueryCheckBox(item);
-        case "SQLServer": return getSQLServerQueryCheckBox(item);
+        case "MySQL": return getMySqlTransferFromCheckBox(item);
+        case "MsSQL": return getMsSqlTransferFromCheckBox(item);
+        case "Oracle": return getOracleTransferFromCheckBox(item);
+        case "SQLServer": return getSQLServerTransferFromCheckBox(item);
     }
     return "";
 }
 
 
-
-const tableSqlMaker = () => {
+const getCreateTableSQLCode = () => {
 
     let tableMaker = document.getElementById(getSqlType() + 'tableMaker').children.item(0);
     let tableName = document.getElementById('tableName').value;
@@ -111,7 +106,7 @@ const tableSqlMaker = () => {
             if (row.children.item(j).children.item(0).getAttribute("type") == "checkbox") {
                 var isChecked = row.children.item(j).children.item(0).checked;
                 if (isChecked == true) {
-                    result += getQueryFromCheckBoxString(row.children.item(j));
+                    result += getQueryFromCheckBoxChecked(row.children.item(j));
                 }
                 cookieResult += isChecked == true? '1' : '0' + "/";
                 rowList[j].push(row.children.item(j).children.item(0).checked);
@@ -133,7 +128,7 @@ const tableSqlMaker = () => {
     
 }
 
-const sqlTypeSelect = (element) => {
+const tableDisplayChangeAsTableType = (element) => {
 
     if (element.value == currentTable)
         return; 
@@ -142,19 +137,19 @@ const sqlTypeSelect = (element) => {
     document.getElementById(currentTable + 'Table').style.display = 'block';
 }
 
-const getTableTypeString = (element) => {
+const getDataTypeOfRow = (element) => {
     return element.parentNode.parentNode.children.item(1).firstElementChild.value;
 }
 
-const checkBoxClear = (element) => {
+const rowAllOfCheckBoxClear = (element) => {
     element = element.parentNode.parentNode;
     for (var i = 2; i < element.children.length - 1; i++) {
         element.children.item(i).firstElementChild.checked = false;
     }
 }
 
-const columnTypeSelect = (element) => {
-    checkBoxClear(element);
+const dataTypeChangeCheck = (element) => {
+    rowAllOfCheckBoxClear(element);
     if (element.value != 'VARCHAR()' && element.value != 'DECIMAL()')
         return;
     var idx = element.value.indexOf('(', 0) + 1;
@@ -163,45 +158,43 @@ const columnTypeSelect = (element) => {
     
 }
 
-const pkCheckboxClick = (element) => {
+const primaryKeyCheckBoxClick = (element) => {
     if (element.checked == false)
         return;
     element.parentNode.nextElementSibling.firstChild.checked = true;
 }
 
-const nnCheckboxClick = (element) => {
+const notNullCheckBoxClick = (element) => {
     var pkElement = element.parentNode.previousElementSibling.firstChild;
     if (element.checked == false && pkElement.checked == true) {
         pkElement.checked = false;
     }
 }
 
-const bCheckboxClick = (element) => {
+const binaryCheckBoxClick = (element) => {
     if (element.checked == false)
         return;
-    element.checked =
-        getTableTypeString(element).indexOf("VARCHAR(") == -1
-            ? false : true;
+    element.checked = getDataTypeOfRow(element).indexOf("VARCHAR(") == -1 ? false : true;
 }
 
-const unzfCheckboxClick = (element) => {
+const unsignIntAndZeroFillCheckBoxClick = (element) => {
     
     if (element.checked == false)
         return;
 
-    let dataType = getTableTypeString(element);
+    let dataType = getDataTypeOfRow(element);
     if (dataType.indexOf("INT") == -1 && dataType.indexOf("DECIMAL") == -1) 
         element.checked = false;
     
 }
 
-const aiAndgCheckboxClick = (element) => {
+const autoIncreaseCheckBoxClick = (element) => {
 
     if (element.checked == false) {
         return;
     }
     var parent = element.parentNode;
-    if (getTableTypeString(element).indexOf("INT") == -1 && parent.headers == 'ai' && element.checked == true) {
+    if (getDataTypeOfRow(element).indexOf("INT") == -1 && parent.headers == 'ai' && element.checked == true) {
         element.checked = false;
         return;
     }
@@ -212,4 +205,4 @@ const aiAndgCheckboxClick = (element) => {
     }
 }
 
-
+init();

@@ -19,7 +19,7 @@
                     </h4>
                     <p class="stepLeft">
                         Select Your SQL :
-                        <select id="sqlType" onclick="sqlTypeSelect(this)">
+                        <select id="sqlType" onclick="tableDisplayChangeAsTableType(this)">
                             <option value="MySQL">MySQL</option>
                             <option value="MsSQL">MsSQL</option>
                             <option value="Oracle">Oracle</option>
@@ -40,7 +40,7 @@
                         Make your database Column
                     </p>
                     <p>
-                        <input class="stepInput" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="newColumnMaker()" />
+                        <input class="stepInput" id="Id_Of_Textbox" type="button" value="Add New Column" onclick="tableNewColumnMaker()" />
                         <div id="MySQLTable" style="display:block;">
                             <table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3">
                                 <thead>
@@ -60,7 +60,7 @@
                                     <tr>
                                         <td headers="cname"> <input type="text" size="10" /></td>
                                         <td headers="dateType">
-                                            <input type="text" list="typelist" oninput="columnTypeSelect(this)" />
+                                            <input type="text" list="typelist" oninput="dataTypeChangeCheck(this)" />
                                             <datalist id="typelist">
                                                 <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                                 <option value="INT">INT</option>
@@ -70,15 +70,15 @@
                                             </datalist>
 
                                         </td>
-                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                                         <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                                        <td headers="b"><input type="checkbox" onclick="bCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="un"><input type="checkbox" onclick="unzfCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="b"><input type="checkbox" onclick="binaryCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="un"><input type="checkbox" onclick="unsignIntAndZeroFillCheckBoxClick(this)" size="10" style="float:left;"></td>
                                         <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="g"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="g"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
                                     </tr>
                                 </thead>
                             </table>
@@ -98,7 +98,7 @@
                                     <tr>
                                         <td headers="cname"> <input type="text" size="10" /></td>
                                         <td headers="dateType">
-                                            <input type="text" list="Mslist" oninput="columnTypeSelect(this)" />
+                                            <input type="text" list="Mslist" oninput="dataTypeChangeCheck(this)" />
                                             <datalist id="Mslist">
                                                 <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                                 <option value="INT">INT</option>
@@ -108,11 +108,11 @@
                                             </datalist>
 
                                         </td>
-                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                                         <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
                                     </tr>
                                 </thead>
                             </table>
@@ -132,7 +132,7 @@
                                     <tr>
                                         <td headers="cname"> <input type="text" size="10" /></td>
                                         <td headers="dateType">
-                                            <input type="text" list="oraclelist" oninput="columnTypeSelect(this)" />
+                                            <input type="text" list="oraclelist" oninput="dataTypeChangeCheck(this)" />
                                             <datalist id="oraclelist">
                                                 <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                                 <option value="NUMBER">NUMBER</option>
@@ -142,11 +142,11 @@
                                             </datalist>
 
                                         </td>
-                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                                         <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
                                     </tr>
                                 </thead>
                             </table>
@@ -166,7 +166,7 @@
                                     <tr>
                                         <td headers="cname"> <input type="text" size="10" /></td>
                                         <td headers="dateType">
-                                            <input type="text" list="SQLServerlist" oninput="columnTypeSelect(this)" />
+                                            <input type="text" list="SQLServerlist" oninput="dataTypeChangeCheck(this)" />
                                             <datalist id="SQLServerlist">
                                                 <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                                 <option value="INT">INT</option>
@@ -176,16 +176,16 @@
                                             </datalist>
 
                                         </td>
-                                        <td headers="pk"><input type="checkbox" onclick="pkCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="nn"><input type="checkbox" onclick="nnCheckboxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                                         <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                                        <td headers="ai"><input type="checkbox" onclick="aiAndgCheckboxClick(this)" size="10" style="float:left;"></td>
-                                        <td headers="deleteButton"><input type="button" onclick="columnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
+                                        <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
+                                        <td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete Button" size="100" style="float:left;"></td>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
-                        <input class="stepInput" id="testBox" type="button" value="Make SQL" onclick="tableSqlMaker()" />
+                        <input class="stepInput" id="testBox" type="button" value="Make SQL" onclick="getCreateTableSQLCode()" />
                     </p>
 
                 </div>
