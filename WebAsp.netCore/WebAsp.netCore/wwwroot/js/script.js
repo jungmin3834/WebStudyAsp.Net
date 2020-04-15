@@ -8,6 +8,10 @@ function itemClick(name) {
     newTableMaker();
 }
 
+const changeParentElementName = (element) => {
+    element.parentNode.name = "qwe";
+    alert(element.parentNode.name);
+}
 
 const newTableMaker = () => {
     var createTable;
@@ -18,7 +22,7 @@ const newTableMaker = () => {
         '<div class="item" style="border: 10px solid rgba(136, 136, 136, .5); "> Description :<input type="text" size="40" /></div>' +
         '<table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3"> ' +
         '<thead> ' + '<tr> ' + '<th>Column Name ' + '<th>Datatype ' + '<th>PK ' + '<th>NN ' + '<th>UQ ' + '<th>B&nbsp;&nbsp;' + '<th>UN ' + '<th>ZF ' + '<th>AI&nbsp; ' + '<th>G&nbsp;&nbsp;' +
-        '<th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker()" /> ' +
+        '<th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" /> ' +
         '</tr> ' + '<tr> ' +
         '<td headers="cname"> <input type="text" size="10" /></td> ' +
         '<td headers="dateType"> ' +

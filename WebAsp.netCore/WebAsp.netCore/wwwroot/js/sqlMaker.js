@@ -2,37 +2,6 @@
 
 var currentTable = 'MySQL';
 
-let newMySql =     null; 
-let newMsSql =     null; 
-let newOracle =    null; 
-let newSqlServer = null; 
-
-
-const init = () => {
-    newMySql = document.getElementById('MySQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
-    newMsSql = document.getElementById('MsSQLtableMaker').firstElementChild.lastElementChild.cloneNode(true);
-    newOracle = document.getElementById('OracletableMaker').firstElementChild.lastElementChild.cloneNode(true);
-    newSqlServer = document.getElementById('SQLServertableMaker').firstElementChild.lastElementChild.cloneNode(true);
-}
-
-
-
-const tableNewColumnMaker = () => {
-
-    var clone = null;
-
-    switch (getSqlType()) {
-        case "MySQL": clone = newMySql; break;
-        case "MsSQL": clone = newMsSql; break;
-        case "Oracle": clone = newOracle; break;
-        case "SQLServer": clone = newSqlServer; break;
-    }
-
-    document.getElementById(getSqlType() + 'tableMaker').firstElementChild.appendChild(clone.cloneNode(true));
-}
-
-
-const tableColumnDelete = (element) => { element.parentNode.parentNode.remove(); }
 
 //MySql
 const getMySqlTransferFromCheckBox = (item) => {
@@ -92,7 +61,6 @@ const getQueryFromCheckBoxChecked = (item) => {
     return "";
 }
 
-
 const getCreateTableSQLCode = () => {
 
     let tableMaker = document.getElementById(getSqlType() + 'tableMaker').children.item(0);
@@ -140,72 +108,4 @@ const tableDisplayChangeAsTableType = (element) => {
     document.getElementById(currentTable + 'Table').style.display = 'block';
 }
 
-const getDataTypeOfRow = (element) => {
-    return element.parentNode.parentNode.children.item(1).firstElementChild.value;
-}
 
-const rowAllOfCheckBoxClear = (element) => {
-    element = element.parentNode.parentNode;
-    for (var i = 2; i < element.children.length - 1; i++) {
-        element.children.item(i).firstElementChild.checked = false;
-    }
-}
-
-const dataTypeChangeCheck = (element) => {
-    rowAllOfCheckBoxClear(element);
-    if (element.value != 'VARCHAR()' && element.value != 'DECIMAL()')
-        return;
-    var idx = element.value.indexOf('(', 0) + 1;
-    const input = element.setSelectionRange(idx, idx);
-    input.focus();
-    
-}
-
-const primaryKeyCheckBoxClick = (element) => {
-    if (element.checked == false)
-        return;
-    element.parentNode.nextElementSibling.firstChild.checked = true;
-}
-
-const notNullCheckBoxClick = (element) => {
-    var pkElement = element.parentNode.previousElementSibling.firstChild;
-    if (element.checked == false && pkElement.checked == true) {
-        pkElement.checked = false;
-    }
-}
-
-const binaryCheckBoxClick = (element) => {
-    if (element.checked == false)
-        return;
-    element.checked = getDataTypeOfRow(element).indexOf("VARCHAR(") == -1 ? false : true;
-}
-
-const unsignIntAndZeroFillCheckBoxClick = (element) => {
-    
-    if (element.checked == false)
-        return;
-
-    let dataType = getDataTypeOfRow(element);
-    if (dataType.indexOf("INT") == -1 && dataType.indexOf("DECIMAL") == -1) 
-        element.checked = false;
-    
-}
-
-const autoIncreaseCheckBoxClick = (element) => {
-
-    if (element.checked == false) {
-        return;
-    }
-    var parent = element.parentNode;
-    if (getDataTypeOfRow(element).indexOf("INT") == -1 && parent.headers == 'ai' && element.checked == true) {
-        element.checked = false;
-        return;
-    }
-    else
-    {
-        (parent.headers == 'ai' ?
-            parent.nextElementSibling : parent.previousElementSibling).firstChild.checked = false;
-    }
-}
-
-init();

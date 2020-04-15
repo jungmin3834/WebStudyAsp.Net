@@ -38,10 +38,10 @@
             </span>
         </p>
         <div id="container">
-            <div id="MySQLTable" style="display:block; width:650px;">
+            <div style="display:block; width:650px;">
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Table Name :
-                    <input type="text" size="10" />
+                    <input type="text" size="10" oninput="changeParentElementName(this)"/>
                 </div>
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Description :
@@ -60,7 +60,7 @@
                             <th>ZF
                             <th>AI&nbsp;
                             <th>G&nbsp;&nbsp;
-                            <th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker()" />
+                            <th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" />
                         </tr>
                         <tr>
                             <td headers="cname"> <input type="text" size="10" /></td>
@@ -90,6 +90,7 @@
             </div>
         </div>
     </div>
+    <script src="~/js/tableElementController.js" asp-append-version="true"></script>>
     <script src="~/js/elementMovement.js" asp-append-version="true"></script>
     <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
     <script src="~/js/menu.js" asp-append-version="true"></script>
