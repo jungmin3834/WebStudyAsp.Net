@@ -8,10 +8,9 @@ function itemClick(name) {
     newTableMaker();
 }
 
-const changeParentElementName = (element) => {
-    element.parentNode.name = "qwe";
-    alert(element.parentNode.name);
-}
+const changeParentElementName = (e) => { e.parentNode.name = e.value;}
+
+const deleteTable = (e) => {  e.parentNode.parentNode.remove(); }
 
 const newTableMaker = () => {
     var createTable;

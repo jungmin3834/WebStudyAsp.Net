@@ -8,20 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Drag Multiple Elements</title>
     <style>
+        body{
+            background:rgba(136, 136, 136, .5);
+        }
         #container {
-            width: 1140px;
-            height: 700px;
+            width: 100vh;
+            height: 900px;
             background-color: gray;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             border-radius: 7px;
             touch-action: none;
         }
+        .item{
+            width:500px;
+        }
     </style>
 </head>
-
 <body>
     <div>
         <p class="stepLeft">
@@ -38,10 +39,11 @@
             </span>
         </p>
         <div id="container">
-            <div style="display:block; width:650px;">
+            <div style="display:block;">
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Table Name :
-                    <input type="text" size="10" oninput="changeParentElementName(this)"/>
+                    <input type="text" size="10" oninput="changeParentElementName(this)" />
+                    <input type="button" onclick="deleteTable(this)"/>
                 </div>
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Description :
@@ -90,7 +92,7 @@
             </div>
         </div>
     </div>
-    <script src="~/js/tableElementController.js" asp-append-version="true"></script>>
+    <script src="~/js/tableElementController.js" asp-append-version="true"></script>
     <script src="~/js/elementMovement.js" asp-append-version="true"></script>
     <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
     <script src="~/js/menu.js" asp-append-version="true"></script>
