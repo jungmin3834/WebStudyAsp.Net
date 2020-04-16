@@ -8,7 +8,11 @@ function itemClick(name) {
     newTableMaker();
 }
 
-const changeParentElementName = (e) => { e.parentNode.name = e.value;}
+const changeParentElementName = (e) => {
+    var parent = e.parentNode.parentNode;
+    parent.id = e.value;
+    parent.lastElementChild.id = e.value + 'Table';
+}
 
 const deleteTable = (e) => {  e.parentNode.parentNode.remove(); }
 
@@ -17,7 +21,7 @@ const newTableMaker = () => {
     createTable = document.createElement('createTable')
     createTable.innerHTML =
         '<div id="test" style="display:block; width:650px;"> ' +
-        '<div class="item" style = "border: 10px solid rgba(136, 136, 136, .5); " >Table Name:<input type="text" size="10" /></div > ' +
+        '<div class="item" style = "border: 10px solid rgba(136, 136, 136, .5); " >Table Name:<input type="text" size="10" /><input type="button" value="DeleteTable" onclick="deleteTable(this)"/></div > ' +
         '<div class="item" style="border: 10px solid rgba(136, 136, 136, .5); "> Description :<input type="text" size="40" /></div>' +
         '<table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3"> ' +
         '<thead> ' + '<tr> ' + '<th>Column Name ' + '<th>Datatype ' + '<th>PK ' + '<th>NN ' + '<th>UQ ' + '<th>B&nbsp;&nbsp;' + '<th>UN ' + '<th>ZF ' + '<th>AI&nbsp; ' + '<th>G&nbsp;&nbsp;' +

@@ -12,8 +12,7 @@ container.addEventListener("mouseup", dragEnd, false);
 container.addEventListener("mousemove", drag, false);
 
 function dragStart(e) {
-    if (e.target !== e.currentTarget && e.target.className.split(' ')[0] == 'item') {
-
+    if (e.target !== e.currentTarget && e.target.className == 'item') {
         active = true;
         activeItem = e.target.parentNode;   
 

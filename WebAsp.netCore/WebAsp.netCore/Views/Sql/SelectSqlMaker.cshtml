@@ -9,19 +9,54 @@
     <title>Drag Multiple Elements</title>
     <style>
         body{
-            background:rgba(136, 136, 136, .5);
+            background: #efefef;
         }
         #container {
             width: 100vh;
             height: 900px;
-            background-color: gray;
+            position:relative;
+            background-color: #efefef;
             border-radius: 7px;
             touch-action: none;
         }
         .item{
             width:500px;
         }
-    </style>
+ 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+</style>
 </head>
 <body>
     <div>
@@ -39,17 +74,25 @@
             </span>
         </p>
         <div id="container">
-            <div style="display:block;">
+            <div id="" style="display:block;">
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Table Name :
                     <input type="text" size="10" oninput="changeParentElementName(this)" />
-                    <input type="button" onclick="deleteTable(this)"/>
+                    <input type="button" value="DeleteTable" onclick="deleteTable(this)" />
+                    <div class="dropdown">
+                        <button>Menu</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="getCreateTableSQLCode(this)">Create Table SQL</a>
+                            <a href="#">Create Select SQL</a>
+                            <a href="#">Create Insert SQL</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
                     Description :
                     <input type="text" size="40" />
                 </div>
-                <table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3">
+                <table class="stepInput" id="" tabindex="213" border="1" cellpadding="3">
                     <thead>
                         <tr>
                             <th>Column Name
@@ -65,9 +108,9 @@
                             <th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" />
                         </tr>
                         <tr>
-                            <td headers="cname"> <input type="text" size="10" /></td>
+                            <td headers="cname"> <input type="text" value="" size="10" /></td>
                             <td headers="dateType">
-                                <input type="text" list="typelist" />
+                                <input type="text" list="typelist" value=""/>
                                 <datalist id="typelist">
                                     <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                     <option value="INT">INT</option>
@@ -80,7 +123,7 @@
                             <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                            <td headers="b"><input type="checkbox" onclick="binaryCheckBoxClick(this)" size="10" style="float:left;"></td>
+                            <td headers="b"><input  type="checkbox" onclick="binaryCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="un"><input type="checkbox" onclick="unsignIntAndZeroFillCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
                             <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>

@@ -1,7 +1,5 @@
-﻿const getSqlType = () => { return document.getElementById('sqlType').value; }
-
+﻿
 var currentTable = 'MySQL';
-
 
 //MySql
 const getMySqlTransferFromCheckBox = (item) => {
@@ -51,7 +49,6 @@ const getSQLServerTransferFromCheckBox = (item) => {
 }
 
 const getQueryFromCheckBoxChecked = (item) => {
-
     switch (getSqlType()) {
         case "MySQL": return getMySqlTransferFromCheckBox(item);
         case "MsSQL": return getMsSqlTransferFromCheckBox(item);
@@ -61,43 +58,50 @@ const getQueryFromCheckBoxChecked = (item) => {
     return "";
 }
 
-const getCreateTableSQLCode = () => {
+const getTableRootNode = (element) => {
+    return element.parentNode.parentNode.parentNode.parentNode;
+}
 
-    let tableMaker = document.getElementById(getSqlType() + 'tableMaker').children.item(0);
-    let tableName = document.getElementById('tableName').value;
-    //ForSave
+const getCreateTableSQLCode = (element) => {
+    let tableName = getTableRootNode(element).id;
+    let tableMaker = document.getElementById(tableName + 'Table').firstElementChild;
+
     var rowList = [[], [], [], [], [], [], [], [], [], []];
     var result = "CREATE TABLE " + tableName + "(<br>";
-    var cookieResult = tableName + "=" + currentTable + "/";
-
+ 
     for (var i = 1; i < tableMaker.children.length; i++) {
+     
         let row = tableMaker.children.item(i);
         result += "&ensp;&emsp;";
+      
         for (var j = 0; j < row.children.length; j++) {
-            if (row.children.item(j).children.item(0).getAttribute("type") == "checkbox") {
-                var isChecked = row.children.item(j).children.item(0).checked;
+
+            var rowData = row.children.item(j).children.item(0);
+            if (rowData.getAttribute("type") == "checkbox") {
+                var isChecked = rowData.checked;
                 if (isChecked == true) {
                     result += getQueryFromCheckBoxChecked(row.children.item(j));
                 }
-                cookieResult += isChecked == true? '1' : '0' + "/";
-                rowList[j].push(row.children.item(j).children.item(0).checked);
-
+                rowList[j].push(rowData.checked);
             }
-            else if (row.children.item(j).children.item(0).getAttribute("type") == "text") {
-                cookieResult += row.children.item(j).children.item(0).value + "/";
-                result = result + row.children.item(j).children.item(0).value + " ";
-                rowList[j].push(row.children.item(j).children.item(0).value);
+            else if (rowData.getAttribute("type") == "text") {
+
+                if (rowData.value == '') {
+                    alert("빈칸을 채워주세요!");
+                    return;
+                }
+                result = result + rowData.value + " ";
+                rowList[j].push(rowData.value);
             }
         }
         result += ",<br>";
-    }
+    } 
     result = result.slice(0, result.length - 5) + "<br>);";
-    document.getElementById("resultSql").innerHTML = result;
-    cookieResult += "; path=/;";
-    document.cookie = cookieResult;
-    getCookie();
-    
 }
+
+const getSelectTableSQLCode = (element) => { alert("Select * From " + getTableRootNode(element).id); + ";" }
+
+const getInsertTableSQLCode = (element) => {}
 
 const tableDisplayChangeAsTableType = (element) => {
 
