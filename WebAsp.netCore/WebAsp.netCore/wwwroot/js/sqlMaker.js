@@ -74,7 +74,7 @@ const getCreateTableSQLCode = (element) => {
         let row = tableMaker.children.item(i);
         result += "&ensp;&emsp;";
       
-        for (var j = 0; j < row.children.length; j++) {
+        for (var j = 0; j < r   ow.children.length; j++) {
 
             var rowData = row.children.item(j).children.item(0);
             if (rowData.getAttribute("type") == "checkbox") {
@@ -101,7 +101,17 @@ const getCreateTableSQLCode = (element) => {
 
 const getSelectTableSQLCode = (element) => { alert("Select * From " + getTableRootNode(element).id); + ";" }
 
-const getInsertTableSQLCode = (element) => {}
+
+
+const getColumnNames = (element) => {
+    let tableMaker = document.getElementById(getTableRootNode(element).id + 'Table').firstElementChild;
+
+}
+
+const getInsertTableSQLCode = (element) => {
+    
+    var resultQuery = 'INSERT INTO table_name(column1, column2, column3, ...) VALUES(value1, value2, value3, ...)';
+}
 
 const tableDisplayChangeAsTableType = (element) => {
 

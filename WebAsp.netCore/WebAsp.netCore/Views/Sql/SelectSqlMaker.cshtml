@@ -8,9 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <title>Drag Multiple Elements</title>
     <style>
-        body{
-            background: #efefef;
-        }
+        body{ background: #efefef;}
         #container {
             width: 100vh;
             height: 900px;
@@ -19,46 +17,61 @@
             border-radius: 7px;
             touch-action: none;
         }
-        .item{
-            width:500px;
-        }
+        .item{  width:500px; }
  
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        .dropdown {position: relative;display: inline-block; }
+
+        .dropdown-content {display: none; position: absolute;
+            background-color: #f1f1f1;  min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1;}
+
+        .dropdown-content a { color: black; padding: 12px 16px;text-decoration: none; display: block; }
+        .dropdown-content a:hover { background-color: #ddd;  }
+        .dropdown:hover .dropdown-content {  display: block; }
+        .dropdown:hover .dropbtn { background-color: #3e8e41; }
+        .tableBody{ width : 605px;  background-color: rgba(0,0,0,0.2); }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+/* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
         }
 
-        .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
+/* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
         }
 
-            .dropdown-content a:hover {
-                background-color: #ddd;
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
             }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-
 </style>
 </head>
 <body>
+    <button id="myBtn">Open Modal</button>
+
     <div>
         <p class="stepLeft">
             <span>
@@ -74,21 +87,20 @@
             </span>
         </p>
         <div id="container">
-            <div id="" style="display:block;">
-                <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
+            <div id="" class="tableBody" style="display:block;">
+                <div class="item" style="width:100%; border: 2px solid rgba(136, 136, 136, .5); ">
                     Table Name :
                     <input type="text" size="10" oninput="changeParentElementName(this)" />
-                    <input type="button" value="DeleteTable" onclick="deleteTable(this)" />
-                    <div class="dropdown">
+                    <div class="dropdown" style=" float:right;">
                         <button>Menu</button>
                         <div class="dropdown-content">
                             <a href="#" onclick="getCreateTableSQLCode(this)">Create Table SQL</a>
-                            <a href="#">Create Select SQL</a>
-                            <a href="#">Create Insert SQL</a>
+                            <a href="#" onclick="getSelectTableSQLCode(this)">Create Select SQL</a>
+                            <a href="#" onclick="deleteTable(this)">Delete SQL Table</a>
                         </div>
                     </div>
                 </div>
-                <div class="item" style="border: 10px solid rgba(136, 136, 136, .5); ">
+                <div class="item" style="width:100%; border-left: 2px solid rgba(136, 136, 136, .5); border-right: 2px solid rgba(136, 136, 136, .5); ">
                     Description :
                     <input type="text" size="40" />
                 </div>
@@ -110,7 +122,7 @@
                         <tr>
                             <td headers="cname"> <input type="text" value="" size="10" /></td>
                             <td headers="dateType">
-                                <input type="text" list="typelist" value=""/>
+                                <input type="text" list="typelist" value="" />
                                 <datalist id="typelist">
                                     <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                     <option value="INT">INT</option>
@@ -123,7 +135,7 @@
                             <td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="uq"><input type="checkbox" size="10" style="float:left;"></td>
-                            <td headers="b"><input  type="checkbox" onclick="binaryCheckBoxClick(this)" size="10" style="float:left;"></td>
+                            <td headers="b"><input type="checkbox" onclick="binaryCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="un"><input type="checkbox" onclick="unsignIntAndZeroFillCheckBoxClick(this)" size="10" style="float:left;"></td>
                             <td headers="zf"><input type="checkbox" onclick="zfCheckboxClick(this)" size="10" style="float:left;"></td>
                             <td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td>
@@ -135,6 +147,40 @@
             </div>
         </div>
     </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
     <script src="~/js/tableElementController.js" asp-append-version="true"></script>
     <script src="~/js/elementMovement.js" asp-append-version="true"></script>
     <script src="~/js/sqlMaker.js" asp-append-version="true"></script>

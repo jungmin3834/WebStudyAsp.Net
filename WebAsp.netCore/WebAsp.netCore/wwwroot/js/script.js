@@ -14,7 +14,7 @@ const changeParentElementName = (e) => {
     parent.lastElementChild.id = e.value + 'Table';
 }
 
-const deleteTable = (e) => {  e.parentNode.parentNode.remove(); }
+const deleteTable = (e) => { e.parentNode.parentNode.parentNode.parentNode.remove(); }
 
 const newTableMaker = () => {
     var createTable;
