@@ -1,4 +1,4 @@
-﻿getCookie();
+﻿
 const openPage = (element) => {
     element.nextElementSibling.style.display =
         (element.nextElementSibling.style.display == 'block' ? 'none' : 'block');

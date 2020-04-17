@@ -31,7 +31,6 @@
         .tableBody{ width : 605px;  background-color: rgba(0,0,0,0.2); }
 
         .modal {
-            display: none; /* Hidden by default */
             position: fixed; /* Stay in place */
             z-index: 1; /* Sit on top */
             padding-top: 100px; /* Location of the box */
@@ -70,7 +69,7 @@
 </style>
 </head>
 <body>
-    <button id="myBtn">Open Modal</button>
+    <button id="myBtn" onclick="onOffModal()">Open Modal</button>
 
     <div>
         <p class="stepLeft">
@@ -147,43 +146,18 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal">
+    <div id="myModal" class="modal" style="  display: none; ">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
+            <span class="close" onclick="onOffModal()">&times;</span>
+            <p id="resultSQL">Some text in the Modal..</p>
         </div>
     </div>
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal
-        btn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+    <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
+    
     <script src="~/js/tableElementController.js" asp-append-version="true"></script>
     <script src="~/js/elementMovement.js" asp-append-version="true"></script>
-    <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
+
     <script src="~/js/menu.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
 </body>

@@ -63,6 +63,7 @@ const getTableRootNode = (element) => {
 }
 
 const getCreateTableSQLCode = (element) => {
+    onOffModal();
     let tableName = getTableRootNode(element).id;
     let tableMaker = document.getElementById(tableName + 'Table').firstElementChild;
 
@@ -74,7 +75,7 @@ const getCreateTableSQLCode = (element) => {
         let row = tableMaker.children.item(i);
         result += "&ensp;&emsp;";
       
-        for (var j = 0; j < r   ow.children.length; j++) {
+        for (var j = 0; j < row.children.length; j++) {
 
             var rowData = row.children.item(j).children.item(0);
             if (rowData.getAttribute("type") == "checkbox") {
@@ -97,20 +98,22 @@ const getCreateTableSQLCode = (element) => {
         result += ",<br>";
     } 
     result = result.slice(0, result.length - 5) + "<br>);";
+    insertResultSQLToModal(result);
 }
 
-const getSelectTableSQLCode = (element) => { alert("Select * From " + getTableRootNode(element).id); + ";" }
-
-
+const getSelectTableSQLCode = (element) => {
+    onOffModal();
+    insertResultSQLToModal("Select * From " + getTableRootNode(element).id + ';');
+}
 
 const getColumnNames = (element) => {
     let tableMaker = document.getElementById(getTableRootNode(element).id + 'Table').firstElementChild;
-
 }
 
 const getInsertTableSQLCode = (element) => {
-    
+    onOffModal();
     var resultQuery = 'INSERT INTO table_name(column1, column2, column3, ...) VALUES(value1, value2, value3, ...)';
+    insertResultSQLToModal(resultQuery);
 }
 
 const tableDisplayChangeAsTableType = (element) => {
@@ -122,4 +125,11 @@ const tableDisplayChangeAsTableType = (element) => {
     document.getElementById(currentTable + 'Table').style.display = 'block';
 }
 
+const insertResultSQLToModal = (resultQuery) =>{
+    document.getElementById('resultSQL').innerHTML = resultQuery;
+}
 
+const onOffModal = () => {
+    var myModal = document.getElementById("myModal");
+    myModal.style.display = (myModal.style.display == 'none' ? 'block' : 'none');
+}
