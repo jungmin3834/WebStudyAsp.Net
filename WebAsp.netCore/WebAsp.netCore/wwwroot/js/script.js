@@ -20,16 +20,24 @@ const newTableMaker = () => {
     var createTable;
     createTable = document.createElement('createTable')
     createTable.innerHTML =
-        '<div id="test" style="display:block; width:650px;"> ' +
-        '<div class="item" style = "border: 10px solid rgba(136, 136, 136, .5); " >Table Name:<input type="text" size="10" /><input type="button" value="DeleteTable" onclick="deleteTable(this)"/></div > ' +
-        '<div class="item" style="border: 10px solid rgba(136, 136, 136, .5); "> Description :<input type="text" size="40" /></div>' +
-        '<table class="stepInput" id="MySQLtableMaker" tabindex="213" border="1" cellpadding="3"> ' +
+        '<div id="" class="tableBody" style="display:block;"> ' +
+        '<div class="item" style = "width:100%; border: 2px solid rgba(136, 136, 136, .5); ">&nbsp;Table Name :&nbsp; <input type="text" size="10" oninput="changeParentElementName(this)" /> ' +
+        '<div class="dropdown" style=" float:right;"> '+
+        '<button>Menu</button> ' +
+        '<div class="dropdown-content"> ' +
+        '<a href="#" onclick="getCreateTableSQLCode(this)">Create Table SQL</a> ' +
+        '<a href="#" onclick="getSelectTableSQLCode(this)">Create Select SQL</a> ' +
+        '<a href="#" onclick="deleteTable(this)">Delete SQL Table</a> ' +
+        '</div> </div> </div> ' +
+        '<div class="item" style="width:100%; border-left: 2px solid rgba(136, 136, 136, .5); border-right: 2px solid rgba(136, 136, 136, .5); "> ' +
+        '&nbsp;Description :&nbsp;&nbsp; <input type="text" size="40" /> </div> ' +
+        '<table class="stepInput" id="" width="100%" height="100%" border="1" cellpadding="3"> ' +
         '<thead> ' + '<tr> ' + '<th>Column Name ' + '<th>Datatype ' + '<th>PK ' + '<th>NN ' + '<th>UQ ' + '<th>B&nbsp;&nbsp;' + '<th>UN ' + '<th>ZF ' + '<th>AI&nbsp; ' + '<th>G&nbsp;&nbsp;' +
         '<th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" /> ' +
         '</tr> ' + '<tr> ' +
         '<td headers="cname"> <input type="text" size="10" /></td> ' +
         '<td headers="dateType"> ' +
-        '<input type="text" list="typelist" /> ' +
+        '<input type="text" size="10" list="typelist" /> ' +
         '<datalist id="typelist"> ' +
         '<option value="VARCHAR()">VARCHAR(SIZE)</option> ' +
         '<option value="INT">INT</option> ' +
