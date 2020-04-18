@@ -17,7 +17,7 @@
             border-radius: 7px;
             touch-action: none;
         }
-        .item{  width:500px; }
+        .item{  width:500px; text-align:left; }
  
         .dropdown {position: relative;display: inline-block; }
 
@@ -49,7 +49,7 @@
             margin: auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 50%;
         }
 
 /* The Close Button */
@@ -69,8 +69,6 @@
 </style>
 </head>
 <body>
-    <button id="myBtn" onclick="onOffModal()">Open Modal</button>
-
     <div>
         <p class="stepLeft">
             <span>
@@ -88,7 +86,7 @@
         <div id="container">
             <div id="" class="tableBody" style="display:block;">
                 <div class="item" style="width:100%; border: 2px solid rgba(136, 136, 136, .5); ">
-                    Table Name :
+                    &nbsp;Table Name :&nbsp;
                     <input type="text" size="10" oninput="changeParentElementName(this)" />
                     <div class="dropdown" style=" float:right;">
                         <button>Menu</button>
@@ -100,10 +98,10 @@
                     </div>
                 </div>
                 <div class="item" style="width:100%; border-left: 2px solid rgba(136, 136, 136, .5); border-right: 2px solid rgba(136, 136, 136, .5); ">
-                    Description :
+                    &nbsp;Description :&nbsp;&nbsp;
                     <input type="text" size="40" />
                 </div>
-                <table class="stepInput" id="" tabindex="213" border="1" cellpadding="3">
+                <table class="stepInput" id="" width="100%" height="100%" border="1" cellpadding="3">
                     <thead>
                         <tr>
                             <th>Column Name
@@ -116,12 +114,12 @@
                             <th>ZF
                             <th>AI&nbsp;
                             <th>G&nbsp;&nbsp;
-                            <th><input class="stepInput" id="Id_Of_Textbox" style="float:left;" size="100" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" />
+                            <th><input class="stepInput" id="Id_Of_Textbox" type="button" value="&nbsp;&nbsp;Add&nbsp;&nbsp;" onclick="tableNewColumnMaker(this)" />
                         </tr>
                         <tr>
                             <td headers="cname"> <input type="text" value="" size="10" /></td>
                             <td headers="dateType">
-                                <input type="text" list="typelist" value="" />
+                                <input type="text"  size="10" list="typelist" value="" />
                                 <datalist id="typelist">
                                     <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                     <option value="INT">INT</option>
@@ -146,11 +144,11 @@
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal" style="  display: none; ">
+    <div id="myModal" class="modal" style=" display: none; ">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close" onclick="onOffModal()">&times;</span>
-            <p id="resultSQL">Some text in the Modal..</p>
+            <p id="resultSQL" style="margin:10px;">Some text in the Modal..</p>
+            <span class="close" style="float:right; margin:10px;" onclick="onOffModal()">&times;</span>
         </div>
     </div>
     <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
