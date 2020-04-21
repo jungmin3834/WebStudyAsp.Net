@@ -3,7 +3,7 @@ var currentTable = 'MySQL';
 
 //MySql
 const getMySqlTransferFromCheckBox = (item) => {
-    switch (item.headers) {
+    switch (item) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
         case "uq": return "UNIQUE ";
@@ -17,7 +17,7 @@ const getMySqlTransferFromCheckBox = (item) => {
 
 //MsSql
 const getMsSqlTransferFromCheckBox = (item) => {
-    switch (item.headers) {
+    switch (item) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
         case "uq": return "UNIQUE ";
@@ -28,7 +28,7 @@ const getMsSqlTransferFromCheckBox = (item) => {
 
 //Oracle
 const getOracleTransferFromCheckBox = (item) => {
-    switch (item.headers) {
+    switch (item) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
         case "uq": return "UNIQUE ";
@@ -39,7 +39,7 @@ const getOracleTransferFromCheckBox = (item) => {
 
 //SQLServer
 const getSQLServerTransferFromCheckBox = (item) => {
-    switch (item.headers) {
+    switch (item) {
         case "pk": return "PRIMARY KEY ";
         case "nn": return "NOT NULL ";
         case "uq": return "UNIQUE ";
@@ -62,41 +62,48 @@ const getTableRootNode = (element) => {
     return element.parentNode.parentNode.parentNode.parentNode;
 }
 
-const getCreateTableSQLCode = (element) => {
-    onOffModal();
-    let tableName = getTableRootNode(element).id;
-    let tableMaker = document.getElementById(tableName + 'Table').firstElementChild;
-
-    var rowList = [[], [], [], [], [], [], [], [], [], []];
-    var result = "CREATE TABLE " + tableName + "(<br>";
+const getTableModelByList = (element) => {
  
+    let tableMaker = element;
+    var rowList = [[], [], [], [], [], [], [], [], [], []];
+  
     for (var i = 1; i < tableMaker.children.length; i++) {
-     
+
         let row = tableMaker.children.item(i);
-        result += "&ensp;&emsp;";
-      
-        for (var j = 0; j < row.children.length; j++) {
-
-            var rowData = row.children.item(j).children.item(0);
+        for (var j = 0; j < row.children.length - 1; j++) {
+            var rowData = row.children.item(j).firstElementChild;
             if (rowData.getAttribute("type") == "checkbox") {
-                var isChecked = rowData.checked;
-                if (isChecked == true) {
-                    result += getQueryFromCheckBoxChecked(row.children.item(j));
-                }
-                rowList[j].push(rowData.checked);
+                rowList[j].push(rowData.checked == true ? row.children.item(j).headers : "");
             }
-            else if (rowData.getAttribute("type") == "text") {
-
-                if (rowData.value == '') {
-                    alert("빈칸을 채워주세요!");
-                    return;
-                }
-                result = result + rowData.value + " ";
+            else if (rowData.getAttribute("type") == "text" && rowData.value != '') {
                 rowList[j].push(rowData.value);
             }
+            else
+                return null;
         }
-        result += ",<br>";
-    } 
+    }
+    return rowList;
+}
+
+const getCreateTableSQLCode = (element) => {
+    onOffModal();
+
+    let tableName = getTableRootNode(element).id;
+    var rowList = getTableModelByList(document.getElementById(tableName + 'Table').firstElementChild);
+    var result = "CREATE TABLE " + tableName + "(<br>";
+    
+    for (var i = 0; i < rowList[0].length; i++) {
+        result += "&ensp;&emsp;";
+        for (var j = 0; j < rowList.length - 1; j++) {
+            if (j > 1 && rowList[j][i] != '') {
+                result += getQueryFromCheckBoxChecked(rowList[j][i]) + " ";
+            }
+            else if (rowList[j][i] != ''){
+                result = result + rowList[j][i] + " ";
+            }
+        }
+        result += ' ,<br>';
+    }
     result = result.slice(0, result.length - 5) + "<br>);";
     insertResultSQLToModal(result);
 }

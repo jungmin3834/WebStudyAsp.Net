@@ -10,25 +10,16 @@ const closePage = (element) => {
     openPage(element.parentNode.parentNode.previousElementSibling);
 }
 
-const cookieParser = (element) => {
-    var cookie = document.cookie;
+
+const getAllOfTableSettingList = () => {
+    var container = document.getElementById("container");
+
+    for (var i = 0; i < container.children.length; i++) {
+        let tableName = container.children.item(i).id;
+        var rowList = getTableModelByList(document.getElementById(tableName + 'Table').firstElementChild);
+    }
 }
 
-function getCookie() {
-
-    var decodedCookie = document.cookie;
-    var ca = decodedCookie.split('=');
-    var tableName = ca[0];
-    var el = ca[1].split('/');
-    var tableType = el[0];
-    var count = tableType == "MySQL" ? 8 : 5;
-
-    var idx = 0;
-    var rowList = [[], [], [], [], [], [], [], [], [], []];
-
-    var str = "";
-    for (var i = 1; i < el.length; i++) {
-        rowList[idx++ % count].push(el[i]);
-    }
-    return "";
+const saveErdSetting = () => {
+    getAllOfTableSettingList();
 }

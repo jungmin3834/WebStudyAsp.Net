@@ -85,17 +85,16 @@ const getMySqlTableRow = () => {
     var createTable;
     createTable = document.createElement('tr')
     createTable.innerHTML =
-        '<td headers="cname"> <input type="text" size="10" /></td> ' +
+        '<td headers="cname"> <input type="text" value="" size="10" /></td> ' +
         '<td headers="dateType"> ' +
-        '<input type="text" list="typelist" /> ' +
+        '<input type="text" size="10" list="typelist" value="" /> ' +
         '<datalist id="typelist"> ' +
         '<option value="VARCHAR()">VARCHAR(SIZE)</option> ' +
         '<option value="INT">INT</option> ' +
         '<option value="DECIMAL()">DECIMAL(SIZE)</option> ' +
         '<option value="DATETIME">DATETIME</option> ' +
         '<option value="BLOB">BLOB</option> ' +
-        '</datalist> ' +
-        '</td> ' +
+        '</datalist> </td> ' +
         '<td headers="pk"><input type="checkbox" onclick="primaryKeyCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="nn"><input type="checkbox" onclick="notNullCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="uq"><input type="checkbox" size="10" style="float:left;"></td> ' +
@@ -105,6 +104,5 @@ const getMySqlTableRow = () => {
         '<td headers="ai"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="g"><input type="checkbox" onclick="autoIncreaseCheckBoxClick(this)" size="10" style="float:left;"></td> ' +
         '<td headers="deleteButton"><input type="button" onclick="tableColumnDelete(this)" value="Delete" size="100" style="float:left;"></td> ';
-
     return createTable;
 }

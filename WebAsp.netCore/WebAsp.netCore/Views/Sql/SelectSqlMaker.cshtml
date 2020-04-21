@@ -81,6 +81,7 @@
                 </select>
                 Erd Name :
                 <input size="20" />
+                <input type="button" value=" Save " onclick="saveErdSetting()" style="margin-left:50px;" />
             </span>
         </p>
         <div id="container">
@@ -119,7 +120,7 @@
                         <tr>
                             <td headers="cname"> <input type="text" value="" size="10" /></td>
                             <td headers="dateType">
-                                <input type="text"  size="10" list="typelist" value="" />
+                                <input type="text" size="10" list="typelist" value="" />
                                 <datalist id="typelist">
                                     <option value="VARCHAR()">VARCHAR(SIZE)</option>
                                     <option value="INT">INT</option>
@@ -152,10 +153,10 @@
         </div>
     </div>
     <script src="~/js/sqlMaker.js" asp-append-version="true"></script>
-    
+
     <script src="~/js/tableElementController.js" asp-append-version="true"></script>
     <script src="~/js/elementMovement.js" asp-append-version="true"></script>
-
+    <script src="~/js/htmlController.js" asp-append-version="true"></script>
     <script src="~/js/menu.js" asp-append-version="true"></script>
     <script src="~/js/script.js" asp-append-version="true"></script>
 </body>
