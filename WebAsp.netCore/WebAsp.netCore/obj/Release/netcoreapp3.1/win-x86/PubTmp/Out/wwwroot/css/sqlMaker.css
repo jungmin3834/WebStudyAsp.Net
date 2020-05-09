@@ -1,0 +1,31 @@
+﻿body {
+}
+
+.fream{
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.upDown{
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+.sqlButtonFream {
+    width: 140px;
+    height: 30px;
+}
+
+.stepInput {
+    margin: 10px;
+}
+
+.stepLeft {
+    margin: 8px;
+    padding: 8px;
+}
+
+.step {
+    padding-top :10px;
+    padding-bottom: 10px;
+}
